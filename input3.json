@@ -1,0 +1,47 @@
+{
+  "entities": [
+    {
+      "name": "Patient",
+      "attributes": [
+        { "name": "PatientID", "isPrimaryKey": true },
+        { "name": "Name" },
+        { "name": "Age" },
+        { "name": "Allergies", "isMultiValued": true }
+      ]
+    },
+    {
+      "name": "Doctor",
+      "attributes": [
+        { "name": "DoctorID", "isPrimaryKey": true },
+        { "name": "Name" },
+        { "name": "Specialization" }
+      ]
+    },
+    {
+      "name": "Room",
+      "attributes": [
+        { "name": "RoomNo", "isPrimaryKey": true },
+        { "name": "Type" },
+        { "name": "Capacity" }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "entity1": "Doctor",
+      "entity2": "Patient",
+      "name": "Treats",
+      "cardinality": "1:N",
+      "attributes": [
+        { "name": "Diagnosis" },
+        { "name": "Date" }
+      ]
+    },
+    {
+      "entity1": "Patient",
+      "entity2": "Room",
+      "name": "Assigned_To",
+      "cardinality": "N:1"
+    }
+  ]
+}

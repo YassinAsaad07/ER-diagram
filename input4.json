@@ -1,0 +1,112 @@
+{
+  "entities": [
+    {
+      "name": "Employee",
+      "attributes": [
+        { "name": "EmpID", "isPrimaryKey": true },
+        { "name": "FullName", "composite": ["FirstName", "MiddleName", "LastName"] },
+        { "name": "Phone", "isMultiValued": true },
+        { "name": "Email" },
+        { "name": "Address", "composite": ["Street", "City", "Country", "ZIP"] },
+        { "name": "Salary" },
+        { "name": "HireDate" }
+      ]
+    },
+    {
+      "name": "Department",
+      "attributes": [
+        { "name": "DeptID", "isPrimaryKey": true },
+        { "name": "DeptName" },
+        { "name": "Budget" },
+        { "name": "Location", "isMultiValued": true }
+      ]
+    },
+    {
+      "name": "Project",
+      "attributes": [
+        { "name": "ProjectID", "isPrimaryKey": true },
+        { "name": "Title" },
+        { "name": "StartDate" },
+        { "name": "EndDate" },
+        { "name": "Budget" }
+      ]
+    },
+    {
+      "name": "Client",
+      "attributes": [
+        { "name": "ClientID", "isPrimaryKey": true },
+        { "name": "Name" },
+        { "name": "ContactNumber", "isMultiValued": true },
+        { "name": "Address", "composite": ["Street", "City", "Country"] }
+      ]
+    },
+    {
+      "name": "Skill",
+      "attributes": [
+        { "name": "SkillID", "isPrimaryKey": true },
+        { "name": "SkillName" },
+        { "name": "Category" }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "entity1": "Employee",
+      "entity2": "Department",
+      "name": "Works_In",
+      "cardinality": "N:1",
+      "attributes": [
+        { "name": "StartDate" },
+        { "name": "Role" }
+      ]
+    },
+    {
+      "entity1": "Department",
+      "entity2": "Employee",
+      "name": "Manages",
+      "cardinality": "1:1",
+      "attributes": [
+        { "name": "Since" }
+      ]
+    },
+    {
+      "entity1": "Employee",
+      "entity2": "Project",
+      "name": "Assigned_To",
+      "cardinality": "M:N",
+      "attributes": [
+        { "name": "HoursPerWeek" },
+        { "name": "TaskDescription" }
+      ]
+    },
+    {
+      "entity1": "Project",
+      "entity2": "Client",
+      "name": "Requested_By",
+      "cardinality": "N:1",
+      "attributes": [
+        { "name": "ContractDate" },
+        { "name": "DeliveryDeadline" }
+      ]
+    },
+    {
+      "entity1": "Employee",
+      "entity2": "Skill",
+      "name": "Has_Skill",
+      "cardinality": "M:N",
+      "attributes": [
+        { "name": "ProficiencyLevel" },
+        { "name": "YearsOfExperience" }
+      ]
+    },
+    {
+      "entity1": "Project",
+      "entity2": "Department",
+      "name": "Supervised_By",
+      "cardinality": "N:1",
+      "attributes": [
+        { "name": "ReviewDate" }
+      ]
+    }
+  ]
+}
