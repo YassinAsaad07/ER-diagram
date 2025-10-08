@@ -81,5 +81,6 @@ if json_match:
 
 
 #A university has students, professors, and courses. Each student has an ID, name, and email. Each professor has an ID, name, and office. A course has a code, title, and credits. Professors teach courses, and students enroll in courses.
+#A hospital management system keeps track of patients, doctors, nurses, departments, appointments, and treatments. Each patient has a unique patient ID, full name (first and last), date of birth, phone numbers (a patient can have multiple), and address. Each doctor has a unique doctor ID, name, specialization, and salary. Each nurse has a nurse ID, name, and assigned department. Departments have a unique department ID, name, and location. Each doctor works in exactly one department, but a department can have many doctors. Patients book appointments with doctors. Each appointment has a date, time, and status (scheduled, completed, canceled). A treatment is prescribed during an appointment and has a treatment ID, description, cost, and duration in days. Nurses assist in treatments — a treatment can have several assisting nurses, and a nurse can assist in multiple treatments. Doctors supervise treatments, and each treatment is supervised by exactly one doctor.
 
 

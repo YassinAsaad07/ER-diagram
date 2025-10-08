@@ -1,10 +1,10 @@
 {
   "entities": [
     {
-      "name": "Student",
+      "name": "Patient",
       "attributes": [
         {
-          "name": "StudentID",
+          "name": "PatientID",
           "isPrimaryKey": true
         },
         {
@@ -15,60 +15,140 @@
           ]
         },
         {
-          "name": "Email"
+          "name": "DateOfBirth"
+        },
+        {
+          "name": "PhoneNumbers",
+          "isMultiValued": true
+        },
+        {
+          "name": "Address"
         }
       ]
     },
     {
-      "name": "Course",
+      "name": "Doctor",
       "attributes": [
         {
-          "name": "CourseID",
-          "isPrimaryKey": true
-        },
-        {
-          "name": "Title"
-        },
-        {
-          "name": "Credits"
-        }
-      ]
-    },
-    {
-      "name": "Instructor",
-      "attributes": [
-        {
-          "name": "InstructorID",
+          "name": "DoctorID",
           "isPrimaryKey": true
         },
         {
           "name": "Name"
         },
         {
-          "name": "Office"
+          "name": "Specialization"
+        },
+        {
+          "name": "Salary"
+        }
+      ]
+    },
+    {
+      "name": "Nurse",
+      "attributes": [
+        {
+          "name": "NurseID",
+          "isPrimaryKey": true
+        },
+        {
+          "name": "Name"
+        }
+      ]
+    },
+    {
+      "name": "Department",
+      "attributes": [
+        {
+          "name": "DepartmentID",
+          "isPrimaryKey": true
+        },
+        {
+          "name": "Name"
+        },
+        {
+          "name": "Location"
+        }
+      ]
+    },
+    {
+      "name": "Appointment",
+      "attributes": [
+        {
+          "name": "AppointmentID",
+          "isPrimaryKey": true
+        },
+        {
+          "name": "Date"
+        },
+        {
+          "name": "Time"
+        },
+        {
+          "name": "Status"
+        }
+      ]
+    },
+    {
+      "name": "Treatment",
+      "attributes": [
+        {
+          "name": "TreatmentID",
+          "isPrimaryKey": true
+        },
+        {
+          "name": "Description"
+        },
+        {
+          "name": "Cost"
+        },
+        {
+          "name": "DurationDays"
         }
       ]
     }
   ],
   "relationships": [
     {
-      "entity1": "Student",
-      "entity2": "Course",
-      "name": "Enrolls",
-      "cardinality": "M:N",
-      "attributes": [
-        {
-          "name": "Grade"
-        },
-        {
-          "name": "Semester"
-        }
-      ]
+      "entity1": "Department",
+      "entity2": "Doctor",
+      "name": "WorksIn",
+      "cardinality": "1:N"
     },
     {
-      "entity1": "Instructor",
-      "entity2": "Course",
-      "name": "Teaches",
+      "entity1": "Patient",
+      "entity2": "Appointment",
+      "name": "Schedules",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Doctor",
+      "entity2": "Appointment",
+      "name": "Hosts",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Department",
+      "entity2": "Nurse",
+      "name": "AssignedTo",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Appointment",
+      "entity2": "Treatment",
+      "name": "Prescribes",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Nurse",
+      "entity2": "Treatment",
+      "name": "AssistsIn",
+      "cardinality": "M:N"
+    },
+    {
+      "entity1": "Doctor",
+      "entity2": "Treatment",
+      "name": "Supervises",
       "cardinality": "1:N"
     }
   ]
