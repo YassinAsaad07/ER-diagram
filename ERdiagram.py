@@ -1,7 +1,13 @@
 import json
 from graphviz import Graph
+import sys
 
-path = input("Enter JSON path : ")
+if len(sys.argv) > 1:
+    path = sys.argv[1]
+else:
+    # If not passed, ask the user to input it
+    path = input("Enter JSON path: ").strip()
+
 with open(path, "r") as file:
     data = json.load(file)
     
@@ -36,7 +42,7 @@ for entity in data["entities"]:
             ER.edge(attribute_id, sub_attribute_id)
 
 
-for relations in data["relationships"] :
+for relations in data.get("relationships", []):
     first_entity =  relations["entity1"]
     second_entity = relations["entity2"]
     relation_name = relations["name"] 
