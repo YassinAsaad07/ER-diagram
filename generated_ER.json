@@ -1,154 +1,83 @@
 {
   "entities": [
     {
-      "name": "Patient",
+      "name": "Book",
       "attributes": [
         {
-          "name": "PatientID",
+          "name": "ISBN",
           "isPrimaryKey": true
         },
         {
-          "name": "Name",
-          "composite": [
-            "FirstName",
-            "LastName"
-          ]
+          "name": "Title"
         },
         {
-          "name": "DateOfBirth"
+          "name": "PublicationYear"
+        }
+      ]
+    },
+    {
+      "name": "Author",
+      "attributes": [
+        {
+          "name": "AuthorID",
+          "isPrimaryKey": true
         },
         {
-          "name": "PhoneNumbers",
-          "isMultiValued": true
+          "name": "Name"
+        }
+      ]
+    },
+    {
+      "name": "Member",
+      "attributes": [
+        {
+          "name": "CardNumber",
+          "isPrimaryKey": true
+        },
+        {
+          "name": "Name"
         },
         {
           "name": "Address"
+        },
+        {
+          "name": "Phone",
+          "isMultiValued": true
         }
       ]
     },
     {
-      "name": "Doctor",
+      "name": "BookCopy",
       "attributes": [
         {
-          "name": "DoctorID",
+          "name": "CopyID",
           "isPrimaryKey": true
-        },
-        {
-          "name": "Name"
-        },
-        {
-          "name": "Specialization"
-        },
-        {
-          "name": "Salary"
-        }
-      ]
-    },
-    {
-      "name": "Nurse",
-      "attributes": [
-        {
-          "name": "NurseID",
-          "isPrimaryKey": true
-        },
-        {
-          "name": "Name"
-        }
-      ]
-    },
-    {
-      "name": "Department",
-      "attributes": [
-        {
-          "name": "DepartmentID",
-          "isPrimaryKey": true
-        },
-        {
-          "name": "Name"
-        },
-        {
-          "name": "Location"
-        }
-      ]
-    },
-    {
-      "name": "Appointment",
-      "attributes": [
-        {
-          "name": "AppointmentID",
-          "isPrimaryKey": true
-        },
-        {
-          "name": "Date"
-        },
-        {
-          "name": "Time"
-        },
-        {
-          "name": "Status"
-        }
-      ]
-    },
-    {
-      "name": "Treatment",
-      "attributes": [
-        {
-          "name": "TreatmentID",
-          "isPrimaryKey": true
-        },
-        {
-          "name": "Description"
-        },
-        {
-          "name": "Cost"
-        },
-        {
-          "name": "DurationDays"
         }
       ]
     }
   ],
   "relationships": [
     {
-      "entity1": "Department",
-      "entity2": "Doctor",
-      "name": "WorksIn",
-      "cardinality": "1:N"
-    },
-    {
-      "entity1": "Patient",
-      "entity2": "Appointment",
-      "name": "Schedules",
-      "cardinality": "1:N"
-    },
-    {
-      "entity1": "Doctor",
-      "entity2": "Appointment",
-      "name": "Hosts",
-      "cardinality": "1:N"
-    },
-    {
-      "entity1": "Department",
-      "entity2": "Nurse",
-      "name": "AssignedTo",
-      "cardinality": "1:N"
-    },
-    {
-      "entity1": "Appointment",
-      "entity2": "Treatment",
-      "name": "Prescribes",
-      "cardinality": "1:N"
-    },
-    {
-      "entity1": "Nurse",
-      "entity2": "Treatment",
-      "name": "AssistsIn",
+      "entity1": "Book",
+      "entity2": "Author",
+      "name": "AuthoredBy",
       "cardinality": "M:N"
     },
     {
-      "entity1": "Doctor",
-      "entity2": "Treatment",
-      "name": "Supervises",
+      "entity1": "Member",
+      "entity2": "BookCopy",
+      "name": "Borrows",
+      "cardinality": "M:N",
+      "attributes": [
+        {
+          "name": "DueDate"
+        }
+      ]
+    },
+    {
+      "entity1": "Book",
+      "entity2": "BookCopy",
+      "name": "HasCopies",
       "cardinality": "1:N"
     }
   ]

@@ -1,0 +1,248 @@
+{
+  "entities": [
+    {
+      "name": "Patient",
+      "attributes": [
+        { "name": "PatientID", "isPrimaryKey": true },
+        { "name": "Name", "composite": ["FirstName", "LastName"] },
+        { "name": "DOB" },
+        { "name": "Gender" },
+        { "name": "PhoneNumbers", "isMultiValued": true },
+        { "name": "Address", "composite": ["Street", "City", "State", "ZIP"] }
+      ]
+    },
+    {
+      "name": "Doctor",
+      "attributes": [
+        { "name": "DoctorID", "isPrimaryKey": true },
+        { "name": "Name", "composite": ["FirstName", "LastName"] },
+        { "name": "Specialization" },
+        { "name": "PhoneNumbers", "isMultiValued": true }
+      ]
+    },
+    {
+      "name": "Nurse",
+      "attributes": [
+        { "name": "NurseID", "isPrimaryKey": true },
+        { "name": "Name", "composite": ["FirstName", "LastName"] },
+        { "name": "Shift" }
+      ]
+    },
+    {
+      "name": "Department",
+      "attributes": [
+        { "name": "DeptID", "isPrimaryKey": true },
+        { "name": "DeptName" },
+        { "name": "Floor" }
+      ]
+    },
+    {
+      "name": "Room",
+      "attributes": [
+        { "name": "RoomID", "isPrimaryKey": true },
+        { "name": "RoomNumber" },
+        { "name": "Type" },
+        { "name": "Capacity" }
+      ]
+    },
+    {
+      "name": "Appointment",
+      "attributes": [
+        { "name": "AppointmentID", "isPrimaryKey": true },
+        { "name": "Date" },
+        { "name": "Time" },
+        { "name": "Reason" }
+      ]
+    },
+    {
+      "name": "Medication",
+      "attributes": [
+        { "name": "MedicationID", "isPrimaryKey": true },
+        { "name": "Name" },
+        { "name": "Dosage" }
+      ]
+    },
+    {
+      "name": "Treatment",
+      "attributes": [
+        { "name": "TreatmentID", "isPrimaryKey": true },
+        { "name": "Description" },
+        { "name": "StartDate" },
+        { "name": "EndDate" }
+      ]
+    },
+    {
+      "name": "Surgery",
+      "attributes": [
+        { "name": "SurgeryID", "isPrimaryKey": true },
+        { "name": "Type" },
+        { "name": "Date" },
+        { "name": "Outcome" }
+      ]
+    },
+    {
+      "name": "Equipment",
+      "attributes": [
+        { "name": "EquipmentID", "isPrimaryKey": true },
+        { "name": "Name" },
+        { "name": "Type" },
+        { "name": "Status" }
+      ]
+    },
+    {
+      "name": "Insurance",
+      "attributes": [
+        { "name": "InsuranceID", "isPrimaryKey": true },
+        { "name": "Provider" },
+        { "name": "PolicyNumber" }
+      ]
+    },
+    {
+      "name": "LabTest",
+      "attributes": [
+        { "name": "LabTestID", "isPrimaryKey": true },
+        { "name": "TestName" },
+        { "name": "Date" },
+        { "name": "Result" }
+      ]
+    }
+  ],
+
+  "relationships": [
+    {
+      "entity1": "Patient",
+      "entity2": "Doctor",
+      "name": "Consults",
+      "cardinality": "M:N",
+      "attributes": [
+        { "name": "Diagnosis" },
+        { "name": "Notes" }
+      ]
+    },
+    {
+      "entity1": "Patient",
+      "entity2": "Appointment",
+      "name": "HasAppointment",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Doctor",
+      "entity2": "Appointment",
+      "name": "Schedules",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Nurse",
+      "entity2": "Department",
+      "name": "AssignedTo",
+      "cardinality": "M:N"
+    },
+    {
+      "entity1": "Doctor",
+      "entity2": "Department",
+      "name": "BelongsTo",
+      "cardinality": "M:N"
+    },
+    {
+      "entity1": "Room",
+      "entity2": "Patient",
+      "name": "OccupiedBy",
+      "cardinality": "1:N",
+      "attributes": [
+        { "name": "CheckInDate" },
+        { "name": "CheckOutDate" }
+      ]
+    },
+    {
+      "entity1": "Treatment",
+      "entity2": "Patient",
+      "name": "PrescribedTo",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Treatment",
+      "entity2": "Medication",
+      "name": "IncludesMedication",
+      "cardinality": "M:N",
+      "attributes": [
+        { "name": "Dosage" },
+        { "name": "Frequency" }
+      ]
+    },
+    {
+      "entity1": "Surgery",
+      "entity2": "Patient",
+      "name": "PerformedOn",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Surgery",
+      "entity2": "Doctor",
+      "name": "PerformedBy",
+      "cardinality": "M:N"
+    },
+    {
+      "entity1": "Equipment",
+      "entity2": "Surgery",
+      "name": "UsedIn",
+      "cardinality": "M:N",
+      "attributes": [
+        { "name": "UsageDuration" }
+      ]
+    },
+    {
+      "entity1": "Patient",
+      "entity2": "Insurance",
+      "name": "CoveredBy",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "LabTest",
+      "entity2": "Patient",
+      "name": "PerformedOn",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "LabTest",
+      "entity2": "Doctor",
+      "name": "OrderedBy",
+      "cardinality": "M:N"
+    },
+    {
+      "entity1": "Doctor",
+      "entity2": "Nurse",
+      "name": "Supervises",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Department",
+      "entity2": "Equipment",
+      "name": "Owns",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Patient",
+      "entity2": "Room",
+      "name": "Reserved",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Treatment",
+      "entity2": "Doctor",
+      "name": "MonitoredBy",
+      "cardinality": "1:N"
+    },
+    {
+      "entity1": "Surgery",
+      "entity2": "Nurse",
+      "name": "AssistedBy",
+      "cardinality": "M:N"
+    },
+    {
+      "entity1": "LabTest",
+      "entity2": "LabTest",
+      "name": "FollowUpFor",
+      "cardinality": "0:N"
+    }
+  ]
+}
