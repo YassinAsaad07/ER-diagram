@@ -77,4 +77,4 @@ for relations in data.get("relationships", []):
     
 
 
-ER.render(filename="ER-diagram/ER Diagram", view=True, cleanup=True)
+ER.render(filename="ER-diagram/ER Diagram", view=True, cleanup=False)

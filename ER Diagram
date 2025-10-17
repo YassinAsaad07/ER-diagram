@@ -1,0 +1,123 @@
+// ER Diagram
+graph {
+	bgcolor=white splines=spline
+	Employee [label=Employee fillcolor="#d1e8ff" shape=box style=filled]
+	"Employee+EmpID" [label=<<u>EmpID</u>> fillcolor="#fff2cc" shape=ellipse style=filled]
+	Employee -- "Employee+EmpID"
+	"Employee+<<u>EmpID</u>>+email1" [label=email1 fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+EmpID" -- "Employee+<<u>EmpID</u>>+email1"
+	"Employee+<<u>EmpID</u>>+email2" [label=email2 fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+EmpID" -- "Employee+<<u>EmpID</u>>+email2"
+	"Employee+FullName" [label=FullName fillcolor="#fff2cc" shape=ellipse style=filled]
+	Employee -- "Employee+FullName"
+	"Employee+FullName+FirstName" [label=FirstName fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+FullName" -- "Employee+FullName+FirstName"
+	"Employee+FullName+MiddleName" [label=MiddleName fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+FullName" -- "Employee+FullName+MiddleName"
+	"Employee+FullName+LastName" [label=LastName fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+FullName" -- "Employee+FullName+LastName"
+	"Employee+Phone" [label=Phone fillcolor="#fff2cc" peripheries=2 shape=ellipse style=filled]
+	Employee -- "Employee+Phone"
+	"Employee+Phone+home" [label=home fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Phone" -- "Employee+Phone+home"
+	"Employee+Phone+mobile" [label=mobile fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Phone" -- "Employee+Phone+mobile"
+	"Employee+Phone+iphone" [label=iphone fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Phone" -- "Employee+Phone+iphone"
+	"Employee+Email" [label=Email fillcolor="#fff2cc" shape=ellipse style=filled]
+	Employee -- "Employee+Email"
+	"Employee+Address" [label=Address fillcolor="#fff2cc" shape=ellipse style=filled]
+	Employee -- "Employee+Address"
+	"Employee+Address+Street" [label=Street fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Address" -- "Employee+Address+Street"
+	"Employee+Address+City" [label=City fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Address" -- "Employee+Address+City"
+	"Employee+Address+Country" [label=Country fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Address" -- "Employee+Address+Country"
+	"Employee+Address+ZIP" [label=ZIP fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Employee+Address" -- "Employee+Address+ZIP"
+	"Employee+Salary" [label=Salary fillcolor="#fff2cc" shape=ellipse style=filled]
+	Employee -- "Employee+Salary"
+	"Employee+HireDate" [label=HireDate fillcolor="#fff2cc" shape=ellipse style=filled]
+	Employee -- "Employee+HireDate"
+	Department [label=Department fillcolor="#d1e8ff" shape=box style=filled]
+	"Department+DeptID" [label=<<u>DeptID</u>> fillcolor="#fff2cc" shape=ellipse style=filled]
+	Department -- "Department+DeptID"
+	"Department+DeptName" [label=DeptName fillcolor="#fff2cc" shape=ellipse style=filled]
+	Department -- "Department+DeptName"
+	"Department+Budget" [label=Budget fillcolor="#fff2cc" shape=ellipse style=filled]
+	Department -- "Department+Budget"
+	"Department+Location" [label=Location fillcolor="#fff2cc" peripheries=2 shape=ellipse style=filled]
+	Department -- "Department+Location"
+	Project [label=Project fillcolor="#d1e8ff" shape=box style=filled]
+	"Project+ProjectID" [label=<<u>ProjectID</u>> fillcolor="#fff2cc" shape=ellipse style=filled]
+	Project -- "Project+ProjectID"
+	"Project+Title" [label=Title fillcolor="#fff2cc" shape=ellipse style=filled]
+	Project -- "Project+Title"
+	"Project+StartDate" [label=StartDate fillcolor="#fff2cc" shape=ellipse style=filled]
+	Project -- "Project+StartDate"
+	"Project+EndDate" [label=EndDate fillcolor="#fff2cc" shape=ellipse style=filled]
+	Project -- "Project+EndDate"
+	"Project+Budget" [label=Budget fillcolor="#fff2cc" shape=ellipse style=filled]
+	Project -- "Project+Budget"
+	Client [label=Client fillcolor="#d1e8ff" shape=box style=filled]
+	"Client+ClientID" [label=<<u>ClientID</u>> fillcolor="#fff2cc" shape=ellipse style=filled]
+	Client -- "Client+ClientID"
+	"Client+Name" [label=Name fillcolor="#fff2cc" shape=ellipse style=filled]
+	Client -- "Client+Name"
+	"Client+ContactNumber" [label=ContactNumber fillcolor="#fff2cc" peripheries=2 shape=ellipse style=filled]
+	Client -- "Client+ContactNumber"
+	"Client+Address" [label=Address fillcolor="#fff2cc" shape=ellipse style=filled]
+	Client -- "Client+Address"
+	"Client+Address+Street" [label=Street fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Client+Address" -- "Client+Address+Street"
+	"Client+Address+City" [label=City fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Client+Address" -- "Client+Address+City"
+	"Client+Address+Country" [label=Country fillcolor="#f9daaf" shape=ellipse style=filled]
+	"Client+Address" -- "Client+Address+Country"
+	Skill [label=Skill fillcolor="#d1e8ff" shape=box style=filled]
+	"Skill+SkillID" [label=<<u>SkillID</u>> fillcolor="#fff2cc" shape=ellipse style=filled]
+	Skill -- "Skill+SkillID"
+	"Skill+SkillName" [label=SkillName fillcolor="#fff2cc" shape=ellipse style=filled]
+	Skill -- "Skill+SkillName"
+	"Skill+Category" [label=Category fillcolor="#fff2cc" shape=ellipse style=filled]
+	Skill -- "Skill+Category"
+	Works_In [label=Works_In fillcolor="#f9bcbc" shape=diamond style=filled]
+	Employee -- Works_In [label=N]
+	Works_In -- Department [label=1]
+	"Works_In+StartDate" [label=StartDate fillcolor="#fff2cc" shape=ellipse style=filled]
+	Works_In -- "Works_In+StartDate"
+	"Works_In+Role" [label=Role fillcolor="#fff2cc" shape=ellipse style=filled]
+	Works_In -- "Works_In+Role"
+	Manages [label=Manages fillcolor="#f9bcbc" shape=diamond style=filled]
+	Department -- Manages [label=1]
+	Manages -- Employee [label=1]
+	"Manages+Since" [label=Since fillcolor="#fff2cc" shape=ellipse style=filled]
+	Manages -- "Manages+Since"
+	Assigned_To [label=Assigned_To fillcolor="#f9bcbc" shape=diamond style=filled]
+	Employee -- Assigned_To [label=M]
+	Assigned_To -- Project [label=N]
+	"Assigned_To+HoursPerWeek" [label=HoursPerWeek fillcolor="#fff2cc" shape=ellipse style=filled]
+	Assigned_To -- "Assigned_To+HoursPerWeek"
+	"Assigned_To+TaskDescription" [label=TaskDescription fillcolor="#fff2cc" shape=ellipse style=filled]
+	Assigned_To -- "Assigned_To+TaskDescription"
+	Requested_By [label=Requested_By fillcolor="#f9bcbc" shape=diamond style=filled]
+	Project -- Requested_By [label=N]
+	Requested_By -- Client [label=1]
+	"Requested_By+ContractDate" [label=ContractDate fillcolor="#fff2cc" shape=ellipse style=filled]
+	Requested_By -- "Requested_By+ContractDate"
+	"Requested_By+DeliveryDeadline" [label=DeliveryDeadline fillcolor="#fff2cc" shape=ellipse style=filled]
+	Requested_By -- "Requested_By+DeliveryDeadline"
+	Has_Skill [label=Has_Skill fillcolor="#f9bcbc" shape=diamond style=filled]
+	Employee -- Has_Skill [label=M]
+	Has_Skill -- Skill [label=N]
+	"Has_Skill+ProficiencyLevel" [label=ProficiencyLevel fillcolor="#fff2cc" shape=ellipse style=filled]
+	Has_Skill -- "Has_Skill+ProficiencyLevel"
+	"Has_Skill+YearsOfExperience" [label=YearsOfExperience fillcolor="#fff2cc" shape=ellipse style=filled]
+	Has_Skill -- "Has_Skill+YearsOfExperience"
+	Supervised_By [label=Supervised_By fillcolor="#f9bcbc" shape=diamond style=filled]
+	Project -- Supervised_By [label=N]
+	Supervised_By -- Department [label=1]
+	"Supervised_By+ReviewDate" [label=ReviewDate fillcolor="#fff2cc" shape=ellipse style=filled]
+	Supervised_By -- "Supervised_By+ReviewDate"
+}
